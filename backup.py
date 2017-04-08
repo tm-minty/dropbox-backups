@@ -9,7 +9,7 @@ import logging
 from dropbox.exceptions import AuthError, ApiError
 from dropbox.files import WriteMode
 
-from config import TOKEN, BACKUP_PATH
+from config import TOKEN, BACKUP_PATH, LOG_DIR
 
 if __name__ == '__main__':
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     logging.basicConfig(
         level='INFO',
-        filename='backup_%s.log' % os.path.basename(file).replace('.', '_'),
+        filename=os.path.join(LOG_DIR, 'backup_%s.log' % os.path.basename(file).replace('.', '_')),
         format='%(levelname)s   %(asctime)s %(process)d   %(message)s'
     )
 
